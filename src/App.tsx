@@ -31,7 +31,7 @@ class App extends Component<{}, IState> {
    * Render Graph react component with state.data parse as property data
    */
   renderGraph() {
-    (this.state.showGraph)
+    if(this.state.showGraph)
     {
        return (<Graph data={this.state.data}/>)
     }
@@ -48,7 +48,9 @@ class App extends Component<{}, IState> {
         // Update the state by creating a new array of data that consists of
         // Previous data in the state and the new data from server
         this.setState({
-          data: [...this.state.data, ...serverResponds] 
+          data: serverResponds,
+          showGraph: true,
+          
           
         });
       });
